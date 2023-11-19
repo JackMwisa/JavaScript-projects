@@ -30,28 +30,36 @@ function checkEmail(input) {
 }
 
 
-function checkRequired(){
-
-    inputs.forEach(function (input) {
-            if (input.value === '') {
-                showError(input, `${getFieldName(input)} is required`);
-            } else {
-                showSuccess(input);
-            }
-        })
-    
-}
-
-
 
 // Event listeners
 form.addEventListener('submit', function (e) {
     e.preventDefault();
 
+    if (username.value === '') {
+        showError(username, 'Username is required');
+    } else {
+        showSuccess(username);
+    }
 
-    const inputs = [username, email, password, password2];
+    if (email.value === '') {
+        showError(email, 'Email is required');
+    } else {
+        checkEmail(email);
+    }
 
-    checkRequired(inputs)
+    if (password.value === '') {
+        showError(password, 'Password is required');
+    } else {
+        showSuccess(password);
+    }
+
+    if (password2.value === '') {
+        showError(password2, 'Password is required');
+    } else {
+        showSuccess(password2);
+    }
+
+
 
 
 });
